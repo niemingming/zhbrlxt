@@ -1,0 +1,29 @@
+{
+  "template":"sougou-*",
+  "settings":{
+    "number_of_shards":"3",
+    "number_of_replicas":"1",
+    "refresh_interval":"2s"
+  },
+  "mappings":{
+    "HISTORY":{
+      "properties":{
+        "visitTime":{"type":"long"},
+        "userId":{"type":"keyword"},
+        "searchWord":{"type":"keyword"},
+        "url":{"type":"keyword"},
+        "sort":{"type":"integer"},
+        "order":{"type":"integer"},
+        "sessionId":{"type":"keyword"}
+      },
+      "dynamic_templates":[
+        {
+          "strings":{
+            "match_mapping_type":"string",
+            "mapping":{"type":"keyword"}
+          }
+        }
+      ]
+    }
+  }
+}
